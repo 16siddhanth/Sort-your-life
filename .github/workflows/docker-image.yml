@@ -1,9 +1,23 @@
--name: Docker Image CI
-  uses: mr-smithers-excellent/docker-build-push@v6
-  with:
-    image: 16siddhanth/sort_your_life
-    tags: v1, latest
-    registry: docker.io
-    dockerfile: Dockerfile.ci
-    username: ${{ secrets.DOCKER_USERNAME }}
-    password: ${{ secrets.DOCKER_PASSWORD }}
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build & Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: 16siddhanth/sort_your_life
+          tags: v1,latest
+          registry: docker.io
+          dockerfile: Dockerfile.ci
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
