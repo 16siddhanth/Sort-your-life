@@ -1,5 +1,5 @@
 # Sort-your-life
-Devsecops project 6th semester
+*Work-in-progress*
 
 This project is a simple web application that allows users to input a list of items and sort them based on the selected type. If the type is "expenses," the items are sorted in ascending order and are shown as a visual experience. If the type is "tasks," the items are sorted according to the priority assigned to each task.
 
